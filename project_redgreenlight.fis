@@ -1,0 +1,69 @@
+[System]
+Name='project_redgreenlight'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='平均車籠長1'
+Range=[0 40]
+NumMFs=5
+MF1='車長很短':'gaussmf',[3.822 0.5]
+MF2='車長短':'gaussmf',[4.247 10]
+MF3='車長正常':'gaussmf',[4.247 20]
+MF4='車長長':'gaussmf',[4.247 30]
+MF5='車長很長':'gaussmf',[4.247 40]
+
+[Input2]
+Name='平均車籠長2'
+Range=[0 40]
+NumMFs=5
+MF1='車長很短':'gaussmf',[3.822 0.5]
+MF2='車長短':'gaussmf',[4.247 10]
+MF3='車長正常':'gaussmf',[4.247 20]
+MF4='車長長':'gaussmf',[4.247 30]
+MF5='車長很長':'gaussmf',[4.247 40]
+
+[Output1]
+Name='綠燈長度'
+Range=[0 120]
+NumMFs=5
+MF1='綠燈很短':'gaussmf',[11.47 1.5]
+MF2='綠燈短':'gaussmf',[12.74 30]
+MF3='綠燈正常':'gaussmf',[12.74 60]
+MF4='綠燈長':'gaussmf',[12.74 90]
+MF5='綠燈很長':'gaussmf',[12.74 120]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+1 3, 1 (1) : 1
+1 4, 1 (1) : 1
+1 5, 1 (1) : 1
+2 1, 3 (1) : 1
+2 2, 2 (1) : 1
+2 3, 2 (1) : 1
+2 4, 2 (1) : 1
+2 5, 1 (1) : 1
+3 1, 4 (1) : 1
+3 2, 3 (1) : 1
+3 3, 3 (1) : 1
+3 4, 3 (1) : 1
+3 5, 2 (1) : 1
+4 1, 4 (1) : 1
+4 2, 4 (1) : 1
+4 3, 4 (1) : 1
+4 4, 3 (1) : 1
+4 5, 3 (1) : 1
+5 1, 5 (1) : 1
+5 2, 4 (1) : 1
+5 3, 4 (1) : 1
+5 4, 4 (1) : 1
+5 5, 3 (1) : 1

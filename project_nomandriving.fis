@@ -1,0 +1,57 @@
+[System]
+Name='project_nomandriving'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='與前車距離'
+Range=[0 1]
+NumMFs=5
+MF1='距離很短':'gaussmf',[0.1062 0]
+MF2='距離短':'gaussmf',[0.1062 0.25]
+MF3='距離正常':'gaussmf',[0.1062 0.5]
+MF4='距離長':'gaussmf',[0.1062 0.75]
+MF5='距離很長':'gaussmf',[0.1062 1]
+
+[Input2]
+Name='與前車速差'
+Range=[-0.5 0.5]
+NumMFs=3
+MF1='車速差較慢':'gaussmf',[0.2123 -0.5]
+MF2='車速差正常':'gaussmf',[0.2123 0]
+MF3='車速差較快':'gaussmf',[0.2123 0.5]
+
+[Output1]
+Name='自己車速'
+Range=[-0.3 0.3]
+NumMFs=5
+MF1='車速很慢':'gaussmf',[0.0637 -0.3]
+MF2='車速慢':'gaussmf',[0.0637 -0.15]
+MF3='車速正常':'gaussmf',[0.0637 0]
+MF4='車速快':'gaussmf',[0.0637 0.15]
+MF5='車速很快':'gaussmf',[0.0637 0.3]
+
+[Rules]
+1 3, 1 (1) : 1
+1 2, 1 (1) : 1
+1 1, 2 (1) : 1
+2 3, 2 (1) : 1
+2 2, 3 (1) : 1
+2 1, 3 (1) : 1
+3 3, 2 (1) : 1
+3 2, 3 (1) : 1
+3 1, 4 (1) : 1
+4 3, 3 (1) : 1
+4 2, 4 (1) : 1
+4 1, 4 (1) : 1
+5 3, 3 (1) : 1
+5 2, 4 (1) : 1
+5 1, 5 (1) : 1
